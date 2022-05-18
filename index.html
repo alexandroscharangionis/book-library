@@ -19,24 +19,40 @@
       <button class="add-btn">Add book</button>
     </header>
     <main class="main-grid">
-      <form action="#">
+      <form class="book_form" action="#">
         <fieldset>
-          <label for="book_title">Title</label>
-          <input id="book_title" name="book_title" type="text" />
-          <label for="book_author">Author</label>
-          <input id="book_author" name="book_author" type="text" />
-          <label for="pages">No. of pages</label>
-          <input type="number" id="pages" name="pages" />
-
-          <div>
-            <legend>Did you read it?</legend>
-            <label for="yes">Yes</label>
-            <input type="radio" id="yes" value="yes" name="read" />
-            <label for="no">No</label>
-            <input type="radio" id="no" value="no" name="read" />
+          <div class="flex">
+            <label for="book_title">Title</label>
+            <input id="book_title" name="book_title" type="text" />
           </div>
-          <button type="submit">Submit</button>
-          <button type="reset">Reset</button>
+
+          <div class="flex">
+            <label for="book_author">Author</label>
+            <input id="book_author" name="book_author" type="text" />
+          </div>
+
+          <div class="flex">
+            <label for="pages">No. of pages</label>
+            <input type="number" id="pages" name="pages" />
+          </div>
+
+          <div class="flex">
+            <legend>Did you read it?</legend>
+            <div class="flex_radio">
+              <div>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes" value="yes" name="read" />
+              </div>
+              <div>
+                <label for="no">No</label>
+                <input type="radio" id="no" value="no" name="read" />
+              </div>
+            </div>
+          </div>
+          <div class="flex_btns">
+            <button class="form_btn">Submit</button>
+            <button class="form_btn">Reset</button>
+          </div>
         </fieldset>
       </form>
       <div class="library">Library grid</div>
