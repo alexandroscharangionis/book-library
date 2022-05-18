@@ -76,13 +76,31 @@ header h1 {
 }
 
 .library {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 30rem;
+  grid-auto-rows: 30rem;
   grid-column: 2 / -1;
   grid-row: 1 / -1;
   background-color: pink;
   padding: 3em;
+  justify-items: center;
+  align-items: center;
+}
+
+.book_card {
+  background-color: darkseagreen;
+  height: 80%;
+  width: 85%;
+  padding: 1em 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
 }
 
 .book_form {
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
