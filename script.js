@@ -18,16 +18,17 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-// Function to create new object for new book entry and add to library array
+// Create new object for new book entry and add to library array
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
 }
 
-// Function to display books on page from library array via cards
+// Display book cards on page from library array
 function displayBooks() {
   const books = document.querySelector(".library");
 
+  // Loops over library array and creates a card for each array item
   myLibrary.forEach((myLibrary) => {
     const card = document.createElement("div");
     card.classList.add("book_card");
