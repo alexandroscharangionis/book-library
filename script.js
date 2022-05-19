@@ -18,3 +18,44 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// Function to create new object for new book entry and add to library array
+function addBookToLibrary(title, author, pages, read) {
+  const book = new Book(title, author, pages, read);
+  myLibrary.push(book);
+}
+
+// Function to display books on page from library array via cards
+function displayBooks() {
+  const books = document.querySelector(".library");
+
+  myLibrary.forEach((myLibrary) => {
+    const card = document.createElement("div");
+    card.classList.add("book_card");
+    books.appendChild(card);
+
+    for (let key in myLibrary) {
+      const para = document.createElement("p");
+      para.textContent = myLibrary[key];
+
+      switch (key) {
+        case "title":
+          para.classList.add("book_title");
+          break;
+        case "author":
+          para.classList.add("book_author");
+          break;
+        case "pages":
+          para.classList.add("book_pages");
+          para.textContent = `${myLibrary[key]} pages`;
+          break;
+      }
+      card.appendChild(para);
+    }
+  });
+}
+
+addBookToLibrary("Klara and the Sun", "Kazuo Ishiguro", 423);
+addBookToLibrary("Harry Potter", "J.K. Rowling", 500);
+addBookToLibrary("Misery", "Stephen King", 350);
+addBookToLibrary("What you can see from here", "Mariana Leky", 380);
+displayBooks();
