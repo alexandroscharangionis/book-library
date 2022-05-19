@@ -21,25 +21,32 @@ body {
 }
 
 header {
-  background-color: azure;
+  background-color: #ccdbdc;
+  background-color: #63c7b2;
   height: 15%;
   padding: 0 5em;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 3px solid #263d42;
 }
 
 header h1 {
   font-size: 5rem;
+  color: #263d42;
 }
 
 .add-btn {
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 2px;
+  background-color: #8e6c88;
   font-family: inherit;
   display: inline-block;
-  font-size: 1.6rem;
-  padding: 1.5em;
+  font-size: 2rem;
+  padding: 1em;
   border-radius: 1rem;
-  border: 1px solid #000;
+  border: 3px solid #263d42;
   transition: all 0.2s;
 }
 
@@ -62,17 +69,20 @@ header h1 {
 .sidebar {
   grid-column: 1 / 2;
   grid-row: 1 / -1;
-  background-color: gainsboro;
+  background-color: #ccdbdc;
   padding: 3em;
+  border-right: 3px solid #263d42;
 }
 
 .sidebar p {
   font-size: 1.8rem;
   margin-bottom: 1.5em;
+  color: #263d42;
 }
 
 .sidebar p span {
   font-weight: 700;
+  color: #263d42;
 }
 
 .library {
@@ -82,14 +92,15 @@ header h1 {
   grid-auto-rows: 30rem;
   grid-column: 2 / -1;
   grid-row: 1 / -1;
-  background-color: pink;
+  background-color: #63c7b2;
+  background-color: #ccdbdc;
   padding: 3em;
   justify-items: center;
   align-items: center;
 }
 
 .book_card {
-  background-color: darkseagreen;
+  background-color: #80ced7;
   height: 80%;
   width: 85%;
   padding: 1em 4em;
@@ -97,6 +108,17 @@ header h1 {
   flex-direction: column;
   justify-content: center;
   gap: 1em;
+  border-radius: 1rem;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+  border: 3px solid #263d42;
+  color: #263d42;
+}
+
+.book_card:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  box-shadow: 1.5px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .book_form {
@@ -109,7 +131,7 @@ header h1 {
   padding: 2em;
   width: 30%;
   height: 40%;
-  border: 1px solid #000;
+  border: 1px solid #263d42;
   border-radius: 0.8rem;
 }
 
