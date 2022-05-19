@@ -19,20 +19,35 @@
       <button class="add-btn">Add book</button>
     </header>
     <main class="main-grid">
-      <form class="book_form" action="#">
+      <form class="book_form">
+        <span
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 close_btn"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            /></svg
+        ></span>
         <div class="flex">
           <label for="book_title">Title</label>
-          <input id="book_title" name="book_title" type="text" />
+          <input id="book_title" name="book_title" type="text" required />
         </div>
 
         <div class="flex">
           <label for="book_author">Author</label>
-          <input id="book_author" name="book_author" type="text" />
+          <input id="book_author" name="book_author" type="text" required />
         </div>
 
         <div class="flex">
           <label for="pages">No. of pages</label>
-          <input type="number" id="pages" name="pages" />
+          <input type="number" id="pages" name="pages" required />
         </div>
 
         <div class="flex">
@@ -40,7 +55,7 @@
           <div class="flex_radio">
             <div>
               <label for="yes">Yes</label>
-              <input type="radio" id="yes" value="yes" name="read" />
+              <input type="radio" id="yes" value="yes" name="read" required />
             </div>
             <div>
               <label for="no">No</label>
@@ -49,7 +64,7 @@
           </div>
         </div>
         <div class="flex_btns">
-          <button class="form_btn">Submit</button>
+          <button id="submit" class="form_btn">Submit</button>
           <button class="form_btn">Reset</button>
         </div>
       </form>
@@ -74,9 +89,10 @@
         </div> -->
       </div>
       <div class="sidebar">
-        <p>Total books: <br /><span></span></p>
-        <p>Finished books: <br /><span></span></p>
+        <p>Total books: <br /><span class="total_books"></span></p>
+        <p>Finished books: <br /><span class="finished_books"></span></p>
       </div>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
