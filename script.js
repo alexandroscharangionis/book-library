@@ -11,6 +11,7 @@ const bookPages = document.getElementById("book_pages");
 const submitBook = document.getElementById("submit");
 let myLibrary = [];
 
+// Book object constructor
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
