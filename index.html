@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/style.css" />
     <title>Book Library</title>
   </head>
-  <body>
+  <body id="body">
     <header>
       <h1>Library</h1>
       <button class="add-btn">Add book</button>
@@ -39,17 +39,14 @@
           <label for="book_title">Title</label>
           <input id="book_title" name="book_title" type="text" required />
         </div>
-
         <div class="flex">
           <label for="book_author">Author</label>
           <input id="book_author" name="book_author" type="text" required />
         </div>
-
         <div class="flex">
           <label for="pages">No. of pages</label>
           <input type="number" id="pages" name="pages" required />
         </div>
-
         <div class="flex">
           <legend>Did you read it?</legend>
           <div class="flex_radio">
@@ -64,10 +61,12 @@
           </div>
         </div>
         <div class="flex_btns">
-          <button id="submit" class="form_btn">Submit</button>
-          <button class="form_btn">Reset</button>
+          <button type="submit" class="form_btn">Submit</button>
+          <button type="reset" class="form_btn">Reset</button>
         </div>
       </form>
+      <div id="wrapper"></div>
+
       <div class="library">
         <!-- <div class="book_card">
           <p class="book_title">Klara and the Sun</p>
