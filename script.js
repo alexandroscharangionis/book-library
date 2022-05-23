@@ -31,6 +31,8 @@ closeBtn.addEventListener("click", () => {
   bookForm.classList.toggle("book_form-active");
 });
 
+submitBook.addEventListener("click", takeFormDataToLibrary);
+
 // Turn user form input and store it into object, then clear form.
 const takeFormDataToLibrary = function (event) {
   event.preventDefault();
@@ -50,7 +52,7 @@ const addBookToLibrary = function (title, author, pages) {
   displayBooks();
 };
 
-function displayBooks() {
+const displayBooks = function () {
   // Loop through library array.
   myLibrary.forEach((item) => {
     // If current item(object) doesn't have displayed property to 'true', go on.
@@ -84,6 +86,4 @@ function displayBooks() {
     // Change object's 'displayed' property to true, so it won't get displayed next time when function/loop is fired.
     item.displayed = true;
   });
-}
-
-submitBook.addEventListener("click", takeFormDataToLibrary);
+};
