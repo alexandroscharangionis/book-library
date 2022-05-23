@@ -5,71 +5,85 @@ const totalBooks = document.querySelector(".total_books");
 const finishedBooks = document.querySelector(".finished_books");
 const bookForm = document.querySelector(".book_form");
 const closeBtn = document.querySelector(".close_btn");
-const bookTitle = document.getElementById("book_title");
-const bookAuthor = document.getElementById("book_author");
-const bookPages = document.getElementById("book_pages");
-const submitBook = document.getElementById("submit");
+const submitBook = document.getElementById("submitBtn");
 const formWrapper = document.getElementById("wrapper");
+const library = document.querySelector(".library");
 let myLibrary = [];
 
 // Book object constructor
-const Book = function (title, author, pages, read) {
+const Book = function (title, author, pages) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.displayed = false;
 };
 
-// Create new object for new book entry and add to library array
-const addBookToLibrary = function (title, author, pages, read) {
-  const book = new Book(title, author, pages, read);
-  myLibrary.push(book);
-};
-
-// Display book cards on page from library array
-const displayBooks = function () {
-  const books = document.querySelector(".library");
-
-  // Loops over library array and creates a card for each array item
-  myLibrary.forEach((myLibrary) => {
-    const card = document.createElement("div");
-    card.classList.add("book_card");
-    books.appendChild(card);
-
-    for (let key in myLibrary) {
-      const para = document.createElement("p");
-      para.textContent = myLibrary[key];
-
-      switch (key) {
-        case "title":
-          para.classList.add("book_title");
-          break;
-        case "author":
-          para.classList.add("book_author");
-          break;
-        case "pages":
-          para.classList.add("book_pages");
-          para.textContent = `${myLibrary[key]} pages`;
-          break;
-      }
-      card.appendChild(para);
-    }
-  });
-};
-const addNewBook = function () {
+// Show/hide form via class toggle
+const displayForm = function () {
   bookForm.classList.toggle("book_form-active");
   formWrapper.classList.toggle("form_wrapper");
 };
+
+addBtn.addEventListener("click", displayForm);
 
 closeBtn.addEventListener("click", () => {
   formWrapper.classList.toggle("form_wrapper");
   bookForm.classList.toggle("book_form-active");
 });
 
-addBtn.addEventListener("click", addNewBook);
+// Turn user form input and store it into object, then clear form.
+const takeFormDataToLibrary = function (event) {
+  event.preventDefault();
+  let bookTitle = document.getElementById("book_title").value;
+  let bookAuthor = document.getElementById("book_author").value;
+  let bookPages = document.getElementById("book_pages").value;
+  addBookToLibrary(bookTitle, bookAuthor, bookPages);
+  bookForm.classList.remove("book_form-active");
+  formWrapper.classList.remove("form_wrapper");
+  document.getElementById("form").reset();
+};
 
-addBookToLibrary("Klara and the Sun", "Kazuo Ishiguro", 423);
-addBookToLibrary("Harry Potter", "J.K. Rowling", 500);
-addBookToLibrary("Misery", "Stephen King", 350);
-addBookToLibrary("What you can see from here", "Mariana Leky", 380);
-displayBooks();
+// Create new object for new book entry and add to library array
+const addBookToLibrary = function (title, author, pages) {
+  const book = new Book(title, author, pages);
+  myLibrary.push(book);
+  displayBooks();
+};
+
+function displayBooks() {
+  // Loop through library array.
+  myLibrary.forEach((item) => {
+    // If current item(object) doesn't have displayed property to 'true', go on.
+    if (item.displayed === false) {
+      const card = document.createElement("div");
+      card.classList.add("book_card");
+      library.appendChild(card);
+
+      // For every property in the object except 'displayed', create a paragraph containing it's value.
+      for (let key in item) {
+        if (key !== "displayed") {
+          const para = document.createElement("p");
+          para.textContent = item[key];
+
+          switch (key) {
+            case "title":
+              para.classList.add("book_title");
+              break;
+            case "author":
+              para.classList.add("book_author");
+              break;
+            case "pages":
+              para.classList.add("book_pages");
+              para.textContent = `${item[key]} pages`;
+              break;
+          }
+          card.appendChild(para);
+        }
+      }
+    }
+    // Change object's 'displayed' property to true, so it won't get displayed next time when function/loop is fired.
+    item.displayed = true;
+  });
+}
+
+submitBook.addEventListener("click", takeFormDataToLibrary);

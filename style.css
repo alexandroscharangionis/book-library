@@ -14,7 +14,6 @@ html {
 body {
   font-family: "Merriweather", serif;
   font-size: 1.6rem;
-  background-color: darkseagreen;
   height: 100vh;
   width: 100vw;
   position: relative;
@@ -63,7 +62,8 @@ header h1 {
   display: grid;
   height: 100%;
   grid-template-columns: 1fr 6fr;
-  grid-template-rows: auto;
+  grid-template-rows: 1fr auto;
+  border-bottom: 3px solid #263d42;
 }
 
 .sidebar {
