@@ -31,8 +31,6 @@ closeBtn.addEventListener("click", () => {
   bookForm.classList.toggle("book_form-active");
 });
 
-submitBook.addEventListener("click", takeFormDataToLibrary);
-
 // Turn user form input and store it into object, then clear form.
 const takeFormDataToLibrary = function (event) {
   event.preventDefault();
@@ -44,6 +42,8 @@ const takeFormDataToLibrary = function (event) {
   formWrapper.classList.remove("form_wrapper");
   document.getElementById("form").reset();
 };
+
+submitBook.addEventListener("click", takeFormDataToLibrary);
 
 // Create new object for new book entry and add to library array
 const addBookToLibrary = function (title, author, pages) {
