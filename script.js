@@ -27,8 +27,6 @@ const Book = function (title, author, pages) {
   this.read = false;
 };
 
-Book.prototype.read = function () {};
-
 // Show/hide form via class toggle
 const displayForm = function () {
   bookForm.classList.toggle("book_form-active");
@@ -74,7 +72,7 @@ const displayBooks = function () {
 
       // For every property in the object except 'displayed', create a paragraph containing it's value.
       for (let key in item) {
-        if (key !== "displayed") {
+        if (key !== "displayed" && key !== "read") {
           const para = document.createElement("p");
           para.textContent = item[key];
 
@@ -91,25 +89,49 @@ const displayBooks = function () {
               break;
             // case "read":
             //   para.classList.add("not_read");
-            //   para.textContent = `Not read yet.`;
+            //   para.textContent = `Not finished yet`;
             //   break;
           }
           card.appendChild(para);
         }
       }
-      if (item.read === false) {
-        const div = document.createElement("div");
-        const label = document.createElement("label");
-        const input = document.createElement("input");
-        input.setAttribute("type", "checkbox");
-        div.classList.add("flex_read");
-        label.classList.add("readLabel");
-        input.classList.add("readOrNot");
-        label.textContent = "Read?";
-        div.appendChild(label);
-        div.appendChild(input);
-        card.appendChild(div);
-      }
+
+      // Create input for read/not read
+      const div = document.createElement("div");
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+
+      input.setAttribute("type", "checkbox");
+      input.setAttribute("id", "isItChecked");
+      div.classList.add("flex_read");
+      label.classList.add("readLabel");
+      input.classList.add("readOrNot");
+      label.textContent = "Read?";
+      div.appendChild(label);
+      div.appendChild(input);
+      card.appendChild(div);
+
+      const isItRead = document.getElementById("isItChecked");
+      const readPara = document.createElement("p");
+      readPara.classList.add("readParagraph");
+
+      // Check if checkbox is true or false and change paragraph content accordingly
+      isItRead.addEventListener("click", (e) => {
+        switch (true) {
+          case isItRead.checked === true:
+            console.log("Checked");
+            item.read = true;
+            readPara.textContent = "Finished";
+            card.appendChild(readPara);
+            break;
+          case isItRead.checked === false:
+            console.log("Not Checked");
+            item.read = false;
+            readPara.textContent = "Not finished";
+            card.appendChild(readPara);
+            break;
+        }
+      });
     }
     // Change object's 'displayed' property to true, so it won't get displayed next time when function/loop is fired.
     item.displayed = true;
@@ -118,5 +140,3 @@ const displayBooks = function () {
 };
 
 displayBooks();
-
-const read = document.getElementById("read");
