@@ -8,7 +8,14 @@ const closeBtn = document.querySelector(".close_btn");
 const submitBook = document.getElementById("submitBtn");
 const formWrapper = document.getElementById("wrapper");
 const library = document.querySelector(".library");
-let myLibrary = [];
+let myLibrary = [
+  {
+    title: "Klara and the Sun",
+    author: "Kazuo Ishiguro",
+    pages: 356,
+    displayed: false,
+  },
+];
 
 // Book object constructor
 const Book = function (title, author, pages) {
@@ -87,3 +94,5 @@ const displayBooks = function () {
     item.displayed = true;
   });
 };
+
+displayBooks();
