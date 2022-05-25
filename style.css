@@ -192,6 +192,19 @@ header h1 {
   align-items: center;
 }
 
+.flex_read {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  font-size: 1.4rem;
+  margin-top: 2em;
+}
+
+.not_read {
+  font-size: 1.4rem;
+  color: red;
+}
+
 .flex_radio {
   display: flex;
   gap: 1em;

@@ -14,6 +14,7 @@ let myLibrary = [
     author: "Kazuo Ishiguro",
     pages: 356,
     displayed: false,
+    read: false,
   },
 ];
 
@@ -23,7 +24,10 @@ const Book = function (title, author, pages) {
   this.author = author;
   this.pages = pages;
   this.displayed = false;
+  this.read = false;
 };
+
+Book.prototype.read = function () {};
 
 // Show/hide form via class toggle
 const displayForm = function () {
@@ -85,14 +89,34 @@ const displayBooks = function () {
               para.classList.add("book_pages");
               para.textContent = `${item[key]} pages`;
               break;
+            // case "read":
+            //   para.classList.add("not_read");
+            //   para.textContent = `Not read yet.`;
+            //   break;
           }
           card.appendChild(para);
         }
+      }
+      if (item.read === false) {
+        const div = document.createElement("div");
+        const label = document.createElement("label");
+        const input = document.createElement("input");
+        input.setAttribute("type", "checkbox");
+        div.classList.add("flex_read");
+        label.classList.add("readLabel");
+        input.classList.add("readOrNot");
+        label.textContent = "Read?";
+        div.appendChild(label);
+        div.appendChild(input);
+        card.appendChild(div);
       }
     }
     // Change object's 'displayed' property to true, so it won't get displayed next time when function/loop is fired.
     item.displayed = true;
   });
+  totalBooks.textContent = myLibrary.length;
 };
 
 displayBooks();
+
+const read = document.getElementById("read");

@@ -47,7 +47,7 @@
           <label for="pages">No. of pages</label>
           <input type="number" id="book_pages" name="pages" required />
         </div>
-        <div class="flex">
+        <!-- <div class="flex">
           <legend>Did you read it?</legend>
           <div class="flex_radio">
             <div>
@@ -59,7 +59,7 @@
               <input type="radio" id="no" value="no" name="read" />
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="flex_btns">
           <button id="submitBtn" class="form_btn">Submit</button>
           <button id="resetBtn" type="reset" class="form_btn">Reset</button>
@@ -72,8 +72,17 @@
           <p class="book_title">Klara and the Sun</p>
           <p class="book_author">by Kazuo Ishiguro</p>
           <p class="book_pages">300 pages</p>
-          <span class="book_status">Finished</span>
-        </div> -->
+          <div class="flex_read">
+            <label class="readLabel" for="read">Read</label>
+            <input
+              class="readOrNot"
+              type="checkbox"
+              name="read"
+              id="read"
+              checked
+            />
+          </div> -->
+        </div>
       </div>
       <div class="sidebar">
         <p>Total books: <br /><span class="total_books"></span></p>
