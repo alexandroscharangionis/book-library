@@ -12,6 +12,7 @@ const submitBook = document.getElementById("submitBtn");
 const formWrapper = document.getElementById("wrapper");
 const library = document.querySelector(".library");
 const error = document.getElementById("error");
+const resetBtn = document.getElementById("resetBtn");
 let myLibrary = [
   {
     title: "Klara and the Sun",
@@ -63,6 +64,11 @@ const takeFormDataToLibrary = function (event) {
 };
 
 submitBook.addEventListener("click", takeFormDataToLibrary);
+
+resetBtn.addEventListener("click", (e) => {
+  document.getElementById("form").reset();
+  error.textContent = "";
+});
 
 // Create new object for new book entry and add to library array
 const addBookToLibrary = function (title, author, pages) {
