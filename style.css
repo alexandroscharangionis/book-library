@@ -133,6 +133,36 @@ header h1 {
   cursor: pointer;
 }
 
+.readBtn {
+  position: absolute;
+  bottom: 2rem;
+  left: 3rem;
+  padding: 0.3em 1em;
+  height: 3rem;
+  width: 7rem;
+  border-radius: 2rem;
+  background-color: #63c7b2;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 2px solid #000;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.readBtn:hover {
+  background-color: #66d4bc;
+
+  width: 8rem;
+}
+
+.readBtnYes {
+  background-color: #ccdbdc;
+  font-style: italic;
+  color: #7a8384;
+}
+
 .deleteBtn:hover {
   background-color: #775972;
 }
@@ -239,6 +269,13 @@ header h1 {
 
 input {
   border: none;
+}
+
+input:invalid {
+  border: 2px solid pink;
+}
+input:valid {
+  border: 2px solid green;
 }
 
 input:focus {
