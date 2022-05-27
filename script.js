@@ -11,6 +11,7 @@ const closeBtn = document.querySelector(".close_btn");
 const submitBook = document.getElementById("submitBtn");
 const formWrapper = document.getElementById("wrapper");
 const library = document.querySelector(".library");
+const error = document.getElementById("error");
 let myLibrary = [
   {
     title: "Klara and the Sun",
@@ -49,10 +50,16 @@ const takeFormDataToLibrary = function (event) {
   let bookTitle = document.getElementById("book_title").value;
   let bookAuthor = document.getElementById("book_author").value;
   let bookPages = document.getElementById("book_pages").value;
-  addBookToLibrary(bookTitle, bookAuthor, bookPages);
-  bookForm.classList.remove("book_form-active");
-  formWrapper.classList.remove("form_wrapper");
-  document.getElementById("form").reset();
+
+  if (bookTitle === "" || bookAuthor === "" || bookPages === "") {
+    console.log("Error error");
+    error.textContent = "Please fill in every field.";
+  } else {
+    addBookToLibrary(bookTitle, bookAuthor, bookPages);
+    bookForm.classList.remove("book_form-active");
+    formWrapper.classList.remove("form_wrapper");
+    document.getElementById("form").reset();
+  }
 };
 
 submitBook.addEventListener("click", takeFormDataToLibrary);
