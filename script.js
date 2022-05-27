@@ -129,10 +129,6 @@ const displayBooks = function () {
               para.classList.add("book_pages");
               para.textContent = `${item[key]} pages`;
               break;
-            // case "read":
-            //   para.classList.add("not_read");
-            //   para.textContent = `Not finished yet`;
-            //   break;
           }
           card.appendChild(para);
         }
