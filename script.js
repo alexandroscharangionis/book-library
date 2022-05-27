@@ -102,9 +102,14 @@ const displayBooks = function () {
       // Delete card & object in library
       deleteBtn.addEventListener("click", (e) => {
         document.getElementById(`${item}-${index}`).remove();
+        if (item.read === true) {
+          item.read = false;
+          finishedBooks--;
+        }
         myLibrary.splice(index, 1);
         console.log(myLibrary);
         totalBooksDisplay.textContent = myLibrary.length;
+        finishedBooksDisplay.textContent = finishedBooks;
       });
 
       // For every property in the object except 'displayed', create a paragraph containing it's value.
