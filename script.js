@@ -13,6 +13,7 @@ const formWrapper = document.getElementById("wrapper");
 const library = document.querySelector(".library");
 const error = document.getElementById("error");
 const resetBtn = document.getElementById("resetBtn");
+
 let myLibrary = [
   {
     title: "Klara and the Sun",
@@ -23,14 +24,25 @@ let myLibrary = [
   },
 ];
 
+// Class for book object
+class Book {
+  constructor(title, author, pages) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.displayed = false;
+    this.read = false;
+  }
+}
+
 // Book object constructor
-const Book = function (title, author, pages) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.displayed = false;
-  this.read = false;
-};
+// const Book = function (title, author, pages) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.displayed = false;
+//   this.read = false;
+// };
 
 // Show/hide form via class toggle
 const displayForm = function () {
@@ -53,7 +65,6 @@ const takeFormDataToLibrary = function (event) {
   let bookPages = document.getElementById("book_pages").value;
 
   if (bookTitle === "" || bookAuthor === "" || bookPages === "") {
-    console.log("Error error");
     error.textContent = "Please fill in every field.";
   } else {
     addBookToLibrary(bookTitle, bookAuthor, bookPages);
@@ -120,7 +131,6 @@ const displayBooks = function () {
           finishedBooks--;
         }
         myLibrary.splice(index, 1);
-        console.log(myLibrary);
         totalBooksDisplay.textContent = myLibrary.length;
         finishedBooksDisplay.textContent = finishedBooks;
       });
